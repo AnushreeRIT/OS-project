@@ -1,0 +1,18 @@
+// Dockerizing DBS Project
+
+FROM httpd
+COPY ./usr/local/apache2/htdocs/
+sudo su
+cd Desktop
+ls
+docker build -t dockerproject .
+docker images
+docker run -itd -p 80:80 –name dockerproject dockerproject
+docker ps
+docker login
+docker tag dockerproject dhanyatha23/dockerproject:latest
+docker images
+docker push dhanyatha23/dockerproject:latest
+docker pull dhanyatha23/dockerproject
+docker ps
+docker images
